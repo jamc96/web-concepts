@@ -1,101 +1,61 @@
-import Image from "next/image";
+import { concepts } from '@/constants';
+import { MaxWidthWrapper } from './components/max-width-wrapper';
+import Link from 'next/link';
+import { ArrowRight } from '@/icons';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <section className='relative py-20 h-full'>
+        <MaxWidthWrapper>
+          <div className='flex flex-col lg:flex-row gap-y-2'>
+            <h1 className='text-4xl w-full lg:max-w-xs shrink-0'>
+              Web Concepts Unleashed
+            </h1>
+            <p>
+              Dive into the future of web development with Web Concepts – a
+              Next.js playground for exploring cutting-edge techniques, advanced
+              features, and innovative ideas. Build, test, and master the art of
+              modern web creation.
+            </p>
+          </div>
+          <div className='flex flex-col lg:flex-row gap-y-2 mt-10'>
+            <h2 className='text-4xl w-full lg:max-w-xs shrink-0'>
+              List of Concepts
+            </h2>
+            {/* List of concepts shared in the respository */}
+            <div className=' flex-col '>
+              {concepts.map(({ title, description, id, link }) => (
+                <article
+                  key={`article-concept-${id}`}
+                  className='group relative isolate'
+                >
+                  <div className='inline-flex flex-col items-baseline gap-y-2 p-4'>
+                    <h3 className='text-xl font-bold'>
+                      <Link href={link || '#'}>
+                        <span className='z-10 absolute inset-0 outline-1 outline-primary hover:bg-primary/15' />
+                        {title}
+                      </Link>
+                    </h3>
+                    <p className='group-hover:text-neutral text-neutral/50 line-clamp-2'>
+                      {description}
+                    </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+                    <div className='inline-flex items-center gap-x-1 text-neutral/50 group-hover:text-neutral'>
+                      <span className='font-bold underline underline-offset-4'>
+                        {`${link ? 'Read Article' : 'Coming Soon'}`}
+                      </span>
+                      {link && (
+                        <ArrowRight className='size-4 transition-all group-hover:translate-x-1 stroke-3' />
+                      )}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </MaxWidthWrapper>
+      </section>
+    </>
   );
 }

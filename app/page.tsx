@@ -10,8 +10,8 @@ export default function Home() {
       <BackgroundGrid />
       <section className='relative py-20 h-full'>
         <MaxWidthWrapper>
-          <div className='flex flex-col lg:flex-row gap-y-2 p-4'>
-            <h1 className='text-4xl w-full lg:max-w-xs shrink-0'>
+          <div className='flex flex-col lg:flex-row gap-y-2 p-4 bg-neutral text-background'>
+            <h1 className='text-4xl w-full lg:max-w-xs shrink-0 '>
               Web Concepts Unleashed
             </h1>
             <p>
@@ -35,7 +35,7 @@ export default function Home() {
                   <div className='inline-flex flex-col items-baseline gap-y-2 p-4'>
                     <h3 className='text-xl font-bold'>
                       <Link href={link || '#'}>
-                        <span className='z-10 absolute inset-0 outline-1 outline-primary hover:bg-primary/10' />
+                        <span className='z-10 absolute inset-0 hover:outline-1 hover:outline-indigo-500  hover:bg-slate-500/20' />
                         {title}
                       </Link>
                     </h3>

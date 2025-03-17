@@ -23,7 +23,7 @@ export default function Home() {
           </div>
           <div className='flex flex-col lg:flex-row gap-y-2 mt-10'>
             <h2 className='text-4xl w-full lg:max-w-xs shrink-0 p-4'>
-              List of Concepts
+              List of Concepts:
             </h2>
             {/* List of concepts shared in the respository */}
             <div className=' flex-col p-4'>
